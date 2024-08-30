@@ -1,8 +1,9 @@
-import {Product} from "./product.model";
+import {Order} from "./order.model";
 
 export class Basket {
-  // products: Product[];
   constructor(
-    public quantity: number,
+    public orders: Order[],
+    public inTotal: number,
+    public totalPrice: number,
   ) {}
 }
