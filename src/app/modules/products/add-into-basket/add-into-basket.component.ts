@@ -1,8 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Product} from "../../core/models/product.model";
 import {BasketService} from "../../core/services/basket.service";
-import {Subscription} from "rxjs";
-import {Basket} from "../../core/models/basket.model";
+import {Order} from "../../core/models/order.model";
 
 @Component({
   selector: 'app-add-into-basket',
@@ -12,14 +11,11 @@ import {Basket} from "../../core/models/basket.model";
 export class AddIntoBasketComponent implements OnInit, OnDestroy {
 
   @Input() product!: Product;
-  basket!: Basket;
+  order!: Order;
   quantity = 1;
   limitedQuantity!: number;
-  sub!: Subscription;
 
   constructor( private basketService: BasketService) {}
-
-
 
   ngOnInit(): void {
     this.limitedQuantity = 12;
@@ -28,28 +24,23 @@ export class AddIntoBasketComponent implements OnInit, OnDestroy {
   addPiece(){
     if(this.quantity < this.limitedQuantity){
       this.quantity = this.quantity + 1;
-      console.log(this.quantity);
     }
   }
 
   subtractPiece(){
     if(this.quantity > 1) {
       this.quantity = this.quantity - 1;
-      console.log(this.quantity);
     }
   }
 
   addToBasket() {
-    console.log(this.quantity)
-    this.sub = this.basketService.orderIncome.subscribe({
-        next: basket => {this.basket = new Basket(this.quantity);
-          console.log(this.basket)},
-        error: err => console.log(err)
-      }
-    )
+    if(!this.product){
+      return;
+    }
+    this.order = new Order(this.product , this.quantity, this.product.price);
+    this.basketService.orderCollector(this.order);
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
    }
 }

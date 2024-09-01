@@ -2,7 +2,7 @@ export interface ProductResponse {
   id: number;
   name: string;
   size: string;
-  price: string;
+  price: number;
   producer: string;
   type: string;
   description: string;
@@ -14,7 +14,7 @@ export class Product implements ProductResponse {
     public id: number,
     public name: string,
     public size: string,
-    public price: string,
+    public price: number,
     public producer: string,
     public type: string,
     public description: string,

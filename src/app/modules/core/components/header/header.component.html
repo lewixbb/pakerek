@@ -31,12 +31,8 @@
 <!--              <button class="btn btn-outline-light" type="submit">Wyszukaj</button>-->
       </form>
       <div class="nav-item dropdown">
-        <button mat-button class="nav-link text-light text-center" id="basket" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <mat-icon matBadge="3" matBadgeColor="warn" matBadgePosition="below after" matBadgeSize="small" class="w-auto h-auto fs-3">shopping_cart</mat-icon>
-        </button>
-        <ul class="dropdown-menu align-content-center" aria-labelledby="basket">
-          <li class="dropdown-item align-content-center">Koszyk jest pusty</li>
-        </ul>
+        <app-basket-tab-mini></app-basket-tab-mini>
+
         <button mat-button class="nav-link text-light text-center" id="login" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <mat-icon class="w-auto h-auto fs-3">login</mat-icon>
         </button>

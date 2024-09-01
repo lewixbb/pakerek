@@ -18,6 +18,19 @@ body {
 
 Main {
   padding-top: 60px;
+  min-height: calc(100% - 310px);
   height: auto;
   background-color: white;
+}
+
+.fs-7 {
+ font-size: 0.9rem;
+}
+
+.fs-8 {
+  font-size: 0.8rem;
+}
+
+.primary {
+  color: #3F51B5;
 }
